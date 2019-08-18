@@ -1,0 +1,21 @@
+.atn-carousel {
+    box-shadow: 5px 5px 5px rgb(88, 95, 95), -5px -5px 5px rgb(88, 95, 95);
+    border-radius: 20px;
+}
+.card {
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px rgb(88, 95, 95), -5px -5px 5px rgb(88, 95, 95);
+    margin: 10px 10px;
+}
+.card img {
+    border-radius: 20px;
+}
+
+.navbar {
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px rgb(88, 95, 95), -5px -5px 5px rgb(88, 95, 95);
+}
+.card:hover {
+    box-shadow: 5px 5px 5px green, -5px -5px 5px green;
+    transform: rotate(10deg)
+}
