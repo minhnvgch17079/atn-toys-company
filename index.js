@@ -10,7 +10,7 @@ const login = require('./controllers/controller_login')
 const store = require('./controllers/controller_store')
 const customer = require('./controllers/controller_customer')
 const admin = require('./controllers/controller_admin')
-
+app.listen(process.env.PORT || 3000)
 app.use(express.static('public'))
 app.use(expressSession({secret: 'Tram Dien'}))
 app.use(express.json())
@@ -68,14 +68,6 @@ app.get('/admin/storestatisify', passport.authenticate('admin', {failureRedirect
 app.get('/admin/store/storestatisify', passport.authenticate('admin', {failureRedirect: '/'}), admin.admin_see_store)
 app.post('/admin/statisify', passport.authenticate('admin', {failureRedirect: '/'}), admin.process_admin_statistify)
 
-
-
-
-
 app.get('/admin', passport.authenticate('admin', {failureRedirect: '/'}), (req, res) => {
     res.render('admin_ui')
-})
-
-app.listen(process.env.PORT, () => {
-    console.log('App running')
 })
