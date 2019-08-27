@@ -1,6 +1,5 @@
 const {check, validationResult} = require('express-validator')
 const client = require('../pg')
-const bcrypt = require('bcrypt')
 
 module.exports.register = (req, res) => {
     res.render('register')
@@ -17,10 +16,8 @@ module.exports.prosess_register = [
     let {fullname, username, password} = req.body
     let errors  = validationResult(req)
     if (errors.isEmpty()) {
-        bcrypt.hash(password, 10)
-        .then(hash => {
             let sql = "insert into customers(c_name, username, password) VALUES "
-            sql += "('"+fullname+"', '"+username+"', '"+hash+"')"
+            sql += "('"+fullname+"', '"+username+"', '"+password+"')"
             client.query(sql)
             .then(result => {
                 res.render('register', {
@@ -32,12 +29,7 @@ module.exports.prosess_register = [
                     result: 'Username have exist'
                 })
             })
-        })
-        .catch(error => {
-            res.render('register', {
-                result: 'Error in encrpyt password'
-            })
-        })   
+   
     } else {
         res.render('register', {
             errors: errors.array()
