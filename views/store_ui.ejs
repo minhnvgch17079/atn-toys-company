@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Store</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+        <div class="header">
+                <div class="header-top">
+                    <div class="adress">
+                        <img src="/img/loom1.png" class="stylelog">
+                        15 Đong Quan, Quan Hoa, Cau Giay,Ha Noi
+                    </div>
+                    <div class="Login">
+                        <a href="" class="stylelog">Hello Store</a>				
+                    </div>
+                </div>
+                <div class="banner">
+                    <img src="/img/bannerweb.png">
+                </div>					
+            </div>
+            <h1 class="text-center"><a class="badge badge-pill badge-info" href="/store/statisify">Statisify</a></h1>
+      
+<% if(locals.products) { %>
+      <table class="table table-hover">
+          <tr>
+              <th colspan="4"><a class="btn btn-primary d-block" href="/store/products/add">Add New</a></th>
+          </tr>
+          <tr>
+              <th>Product's Name</th>
+              <th>Price</th>
+              <th>Image</th>
+              <th>Modify</th>
+          </tr>
+    <% for(let i = 0; i < products.length; i++) { %>
+          <tr>
+              <td><%= products[i].p_name %></td>
+              <td><%= products[i].price %></td>
+              <td><img width="200px" src="<%= products[i].img %>" alt=""></td>
+              <td>
+                <a class="btn btn-primary" href="/store/products/edit?productId=<%= products[i].id %>">Edit</a>
+                <a class="btn btn-primary" href="/store/products/delete?productId=<%= products[i].id %>">Delete</a>
+              </td>
+          </tr>
+    <% } %>
+    </table>
+<% } %>
+
+<% if(locals.edit) { %>
+    <form action="/store/products/edit" enctype="multipart/form-data" method="POST" >
+        <input style="display: none" type="text" name="productId" value="<%= edit.id %>">
+        <div class="form-group">
+            <label for="productname">Product's Name</label>
+            <input class="form-control" type="text" name="productname" id="productname" value="<%= edit.p_name %>">
+        </div>
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input class="form-control" type="text" name="price" id="price" value="<%= edit.price %>">
+        </div>
+        <div class="form-group">
+            <img width="200px" src="<%= edit.img %>" alt="">
+            <label for="image">Image</label>
+            <input class="form-control" type="file" name="file" id="image"> 
+        </div>
+        <div class="form-group">
+            <button type="submit">Upload</button>
+        </div>
+    </form>
+<% } %>
+
+<% if(locals.add) { %>
+    <% if(locals.addErr) {%> 
+        <h1><%= addErr %></h1>
+    <% } %>
+    <form action="/store/products/add" enctype="multipart/form-data" method="POST" >
+        <div class="form-group">
+            <label for="productname">Product's Name</label>
+            <input class="form-control" type="text" name="productname" id="productname">
+        </div>
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input class="form-control" type="text" name="price" id="price">
+        </div>
+        <div class="form-group">
+            <label for="image">Image</label>
+            <input class="form-control" type="file" name="file" id="image"> 
+        </div>
+        <div class="form-group">
+            <button type="submit">Add New</button>
+        </div>
+    </form>
+<% } %>
+
+
+
+<% if(locals.statistify) { %>
+    <% if(locals.resultStatistify) { %>
+        <h1><%= resultStatistify.sum %> $</h1>
+    <% } %>
+    <form action="/store/statisify" method="POST" >
+        <div class="form-group">
+            <label for="from">From</label>
+            <input class="form-control" type="date" name="from" id="from">
+        </div>
+        <div class="form-group">
+            <label for="to">To</label>
+            <input class="form-control" type="date" name="to" id="to">
+        </div>
+        <div class="form-group">
+            <button type="submit">See</button>
+        </div>
+    </form>
+<% } %>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

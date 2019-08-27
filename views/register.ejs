@@ -1,83 +1,42 @@
-<%- include('header') -%>
-<title>Register</title>
-</head>
-<body>
-  <div class="container">
-<%- include('navbar') -%>
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
 <% if(locals.result) { %>
-      <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <strong><%= result %></strong> 
-      </div>
+    <h1><%= result %></h1>
 <% } %>
-<% if(locals.err) { %>
-    <% for(var i = 0; i < err.length; i++) { %>
-      <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <strong><%= err[i].msg %></strong> 
-      </div>
+
+<% if(locals.errors) { %>
+    <% for(let i = 0; i < errors.length; i++) { %>
+        <h1><%= errors[i].msg %></h1>
     <% } %>
 <% } %>
-<% if(locals.input) { %>
-      <h1 class="text-center text-info">Please Fill Out For Register</h1>
-      <form action="" method="POST" class="text-info">
-        <div class="form-group">
-          <label for="username">Username</label>
-          <input class="form-control" type="text" name="username" value="<%= input.username %>" id="username">
-        </div>
 
+    <form action="/register" method="POST">
         <div class="form-group">
-          <label for="password">Password</label>
-          <input class="form-control" type="password" name="password" value="<%= input.password %>" id="password">
-        </div>
-
-        <div class="form-group">
-          <label for="confirm">Confirm Pasword</label>
-          <input class="form-control" type="password" name="confirm" value="<%= input.confirm %>" id="confirm">
-        </div>
-
-        <div class="form-group">
-          <label for="info">Information</label>
-          <input class="form-control" type="text" name="info" value="<%= input.info %>" id="info">
+            <label for="fullname">Full Name</label>
+            <input class="form-control" type="text" name="fullname" id="fullname">
         </div>
         <div class="form-group">
-          <button class="btn btn-block btn-info" type="submit">Register</button>
-        </div>
-      </form>
-<% } else { %>
-  <h1 class="text-center text-info">Please Fill Out For Register</h1>
-      <form action="" method="POST" class="text-info">
-          <div class="form-group">
             <label for="username">Username</label>
             <input class="form-control" type="text" name="username" id="username">
-          </div>
-          
-          <div class="form-group">
+        </div>
+        <div class="form-group">
             <label for="password">Password</label>
             <input class="form-control" type="password" name="password" id="password">
-          </div>
-
-          <div class="form-group">
-            <label for="confirm">Confirm Pasword</label>
-            <input class="form-control" type="password" name="confirm" id="confirm">
-          </div>
-
-          <div class="form-group">
-            <label for="info">Information</label>
-            <input class="form-control" type="text" name="info" id="info">
-          </div>
-          
-          <div class="form-group">
-            <button class="btn btn-info btn-block" type="submit">Register</button>
-          </div>
-        </form>
-<% } %>
-        <a href="/" class="btn btn-block btn-info">Back</a>
-</div>
+        </div>
+        <div class="form-group">
+            <button type="submit">Register</button>
+        </div>
+    </form>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -1,0 +1,42 @@
+create table customers (
+	id serial primary key,
+	c_name varchar(50),
+	username varchar(25),
+	password varchar(25)
+);
+create table stores (
+	id serial primary key,
+	s_name varchar(50),
+	username varchar(25),
+	password varchar(25)
+);
+create table admins (
+	id serial primary key,
+	a_name varchar(50),
+	username varchar(25),
+	password varchar(25)
+);
+create table products (
+	id serial primary key,
+	p_name varchar(25),
+	price int,
+	img varchar(100),
+	s_id int,
+	foreign key (s_id) references stores(id)	
+);
+create table orders (
+	id serial primary key,
+	p_id int,
+	c_id int,
+	date date default current_date,
+	foreign key (p_id) references products(id),
+	foreign key (c_id) references customers(id)
+	
+);
+
+alter table customers add  unique (username);
+alter table stores add  unique (username);
+alter table admins add  unique (username);
+alter table customers alter column password type varchar(100);
+alter table stores alter column password type varchar(100);
+alter table admins alter column password type varchar(100);

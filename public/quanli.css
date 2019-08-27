@@ -1,0 +1,11 @@
+.example{
+    margin: 20px;
+    width: 1000px;
+    margin:0 auto;
+}
+.add{
+	margin-left: 10px;
+}
+.addpro{
+	display: flex;
+}
