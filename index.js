@@ -76,6 +76,6 @@ app.get('/admin', passport.authenticate('admin', {failureRedirect: '/'}), (req, 
     res.render('admin_ui')
 })
 
-app.listen(process.env.PORT, () => {
+app.listen(3000 || process.env.PORT, () => {
     console.log('App running')
 })
