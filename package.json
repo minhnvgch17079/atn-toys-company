@@ -1,8 +1,8 @@
 {
-  "name": "tram",  
-  "engines": { 
-      "node": "12.6.0" 
-   },
+  "name": "tram",
+  "engines": {
+    "node": "12.6.0"
+  },
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -13,7 +13,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^3.0.6",
     "cookie-parser": "^1.4.4",
     "ejs": "^2.6.2",
     "express": "^4.17.1",
@@ -26,4 +25,3 @@
     "pg": "^7.12.1"
   }
 }
-

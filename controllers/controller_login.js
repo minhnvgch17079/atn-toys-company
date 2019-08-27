@@ -1,6 +1,5 @@
 const {check, validationResult} = require('express-validator')
 const client = require('../pg')
-const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
 module.exports.customer_login = (req, res) => {
@@ -23,23 +22,15 @@ module.exports.process_customer_login = [
                         result: 'Wrong username or password'
                     })
                 } else {
-                    bcrypt.compare(password, result.rows[0].password)
-                    .then(checkMatch => {
-                        if(checkMatch == true) {
-                            let token = jwt.sign({id: result.rows[0].id}, 'customertramdien')
-                            res.cookie('token', token)
-                            res.redirect('/')
-                        } else {
-                            res.render('customer_login', {
-                                result: 'Wrong username or password'
-                            })
-                        }
-                    })
-                    .catch(error => {
+                    if(password == result.rows[0].password) {
+                        let token = jwt.sign({id: result.rows[0].id}, 'customertramdien')
+                        res.cookie('token', token)
+                        res.redirect('/')
+                    }else {
                         res.render('customer_login', {
                             result: 'Wrong username or password'
                         })
-                    })
+                    }
                 }
             })
             .catch(error => {
@@ -74,23 +65,15 @@ module.exports.process_store_login = [
                         result: 'Wrong username or password'
                     })
                 } else {
-                    bcrypt.compare(password, result.rows[0].password)
-                    .then(checkMatch => {
-                        if(checkMatch == true) {
-                            let token = jwt.sign({id: result.rows[0].id}, 'storetramdien')
-                            res.cookie('token', token)
-                            res.redirect('/store')
-                        } else {
-                            res.render('store_login', {
-                                result: 'Wrong username or password'
-                            })
-                        }
-                    })
-                    .catch(error => {
+                    if(password == result.rows[0].password) {
+                        let token = jwt.sign({id: result.rows[0].id}, 'storetramdien')
+                        res.cookie('token', token)
+                        res.redirect('/store')
+                    } else {
                         res.render('store_login', {
                             result: 'Wrong username or password'
                         })
-                    })
+                    }
                 }
             })
             .catch(error => {
@@ -125,23 +108,15 @@ module.exports.process_admin_login = [
                         result: 'Wrong username or password'
                     })
                 } else {
-                    bcrypt.compare(password, result.rows[0].password)
-                    .then(checkMatch => {
-                        if(checkMatch == true) {
-                            let token = jwt.sign({id: result.rows[0].id}, 'admintramdien')
-                            res.cookie('token', token)
-                            res.redirect('/admin')
-                        } else {
-                            res.render('admin_login', {
-                                result: 'Wrong username or password'
-                            })
-                        }
-                    })
-                    .catch(error => {
+                    if(password, result.rows[0].password) {
+                        let token = jwt.sign({id: result.rows[0].id}, 'admintramdien')
+                        res.cookie('token', token)
+                        res.redirect('/admin')
+                    }else {
                         res.render('admin_login', {
                             result: 'Wrong username or password'
                         })
-                    })
+                    }
                 }
             })
             .catch(error => {
