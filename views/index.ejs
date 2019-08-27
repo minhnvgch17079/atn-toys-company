@@ -98,6 +98,7 @@
 			<div class="Tatcasanpham">
 				<h2 class="danhmuc-h2">All Products</h2>
 				<div class="row">
+<% if(locals.products) { %>
 					<div class="col-sm-6">
 							<div class="sanpham">
 									<img class="img-fluid img-thumbnail" src="<%= products[0].img %>">
@@ -134,6 +135,7 @@
 								</div>
 					</div>
 				</div>
+<% } %>
 				<div class="numberpage" style="display: flex; justify-content: center">
 					<nav aria-label="Page navigation example">
 					  <ul class="pagination">
