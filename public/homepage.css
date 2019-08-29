@@ -4,28 +4,94 @@
 	margin: 0 auto;
 }
 .header-top{
-	background: green;	
+	background: #a3e6a3;
+	height: 50px;
 }
 .adress{
 	float: left;
+	margin-top: 10px;
 }
 .Login{
 	float: right;
+	margin-top: 10px;
 }
 .Content{
 	width: 1000px;
 	height: auto;
 	margin: 0 auto;
 	display: flex;
-	background-color: rgba(0, 255, 222, 0.21);
+	background-color: #a3e6a3;
 }
 .left{
-	width: 27%;
+	width: 22%;
 }
 .right{
-	width: 73%;
+	width: 78%;
+	background:white;
 }
 
 .d-block {
 	margin: 30px;
+}
+.stylelog{
+	color: #595988;
+	font-weight: bold;	
+	margin-right: 5px;
+	border-right: 1px solid ;
+}
+.Danhmuc{
+	width: 200px;
+	height: 230px;
+	background:white;
+	margin-top: 10px;
+	margin-left: 5px;
+}
+.danhmuc-h2{
+	color: #c18f33;
+	margin-left: 10px;
+}
+.Danhmuc ul li{
+	list-style: none;
+	margin-left: -30px;
+	font-weight: bold;
+}
+.quangcao{
+	margin-top: 20px;
+	margin-left: 7px;
+}
+.Danhmuc2{
+	height: 300px;
+}
+.dong1{
+	margin-left: 50px;
+	display: flex;
+}
+.sanpham1{
+	height: 320px;
+	width: 200px;	
+	margin-left: 80px;
+}
+.tensp{
+	text-align: center;
+	font-weight: bold;
+}
+.price{
+	text-align: center;
+	font-weight: bold;
+	color: orange;
+}
+.oder{
+	font-weight: bold;
+	display: flex;
+	justify-content: center;
+}
+.navi{
+	display: flex;
+	justify-content: center;
+	height: 80px;	
+	background:#a3e6a3;
+	margin-top: -30px;
+}
+.navi1{
+	margin-top: 20px;
 }
